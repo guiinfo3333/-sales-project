@@ -7,10 +7,13 @@ class Product extends Model{
 			value: DataTypes.FLOAT,
             description: DataTypes.STRING,
             productcategory_id : DataTypes.INTEGER,
-            techinicalsheet_id : DataTypes.INTEGER,
+			techinicalsheet_id : DataTypes.INTEGER,
+			firstimageproduct_id: DataTypes.INTEGER,
+			
             
 		},{
-			sequelize
+			sequelize,
+			tableName: 'product',
 		})
 	}
 
@@ -19,4 +22,4 @@ class Product extends Model{
 } 
 
 
-module.exports = Admins;
+module.exports = Product;

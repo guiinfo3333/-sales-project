@@ -4,7 +4,8 @@ const sequelize = new Sequelize(dbConfig);
 
 class Smartquerys{
 
-	static selectsProducts(op,id,namecat,order){
+	static selectsProducts(op,namecat,id,order,brand){
+		
 		
 	var query;
 		switch(op){                 //independente de categoria
@@ -16,18 +17,18 @@ class Smartquerys{
 				return sequelize.query(query);
 			break;
 			case 'totalporcat':   //retorna todos os produtos por categoria
-			var complet = "order by p.nameproduct ASC";
-			if(order){
-				
-				query= "select p.id,p.nameproduct,p.value,p.description,f.nameimageproduct,f.size,f.key,f.url"
-				+" from product p inner join firstimageproduct f on p.firstimageproduct_id"
-				+" = f.id inner join productcategory pc on p.productcategory_id ="
-				+" pc.id join techinicalsheet t on p.techinicalsheet_id= t.id where pc.namecategory='"+namecat+"'"+complet;
-			}else{
-				query= "select p.id,p.nameproduct,p.value,p.description,f.nameimageproduct,f.size,f.key,f.url"
+			var complet = " order by p.nameproduct ASC";
+
+			query= "select p.id,p.nameproduct,p.value,p.description,f.nameimageproduct,f.size,f.key,f.url"
 				+" from product p inner join firstimageproduct f on p.firstimageproduct_id"
 				+" = f.id inner join productcategory pc on p.productcategory_id ="
 				+" pc.id join techinicalsheet t on p.techinicalsheet_id= t.id where pc.namecategory='"+namecat+"'";
+			
+			if(brand){   //no caso se a marca estiver configurada
+				query = query + " and t.brand='"+brand+"'";
+			}
+			if(order){
+				query = query+complet;
 			}
 				
 				return sequelize.query(query);

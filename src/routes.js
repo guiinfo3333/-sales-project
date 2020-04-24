@@ -31,9 +31,9 @@ routes.get('/techinicalsheet',TechinicalSheetController.index);
 routes.post('/techinicalsheet',TechinicalSheetController.store);
 routes.delete('/techinicalsheet/:id',TechinicalSheetController.delete);
 
-routes.get('/imageproduct',ImageProductController.index);
+routes.get('/imageproduct/:id',ImageProductController.index);
 routes.post('/imageproduct',ImageProductController.store);
-routes.delete('/imageproduct/:id',ImageProductController.delete);
+
 
 routes.get('/firstimageproduct',FirstImageProductController.index);
 routes.post('/firstimageproduct',FirstImageProductController.store);

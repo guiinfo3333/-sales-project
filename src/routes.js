@@ -1,4 +1,6 @@
 const express = require('express');
+const multer =require("multer");
+const multerconfig = require('./config/multer');
 // const authMiddleware = require('./middlewares/auth');
 
 const AdminController = require('./controllers/AdminController');
@@ -32,13 +34,17 @@ routes.post('/techinicalsheet',TechinicalSheetController.store);
 routes.delete('/techinicalsheet/:id',TechinicalSheetController.delete);
 
 routes.get('/imageproduct/:id',ImageProductController.index);
-routes.post('/imageproduct',ImageProductController.store);
+routes.post('/imageproduct/:id',multer(multerconfig).single('file'),ImageProductController.store);
 
 
 routes.get('/firstimageproduct',FirstImageProductController.index);
-routes.post('/firstimageproduct',FirstImageProductController.store);
+routes.post('/firstimageproduct',multer(multerconfig).single('file'),FirstImageProductController.store);
 routes.delete('/firstimageproduct/:id',FirstImageProductController.delete);
 
 routes.get('/selectproduct',SelectProductsController.index);
 
+// routes.post("/posts",multer(multerconfig).single('file'),(req,res) => {
+//     console.log(req.file);
+//     return res.json({hello : "Oi"})
+// })
 module.exports = routes;

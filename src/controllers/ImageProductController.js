@@ -14,16 +14,17 @@ module.exports ={
         return res.json(imageproduct);
     },
     async store(req,res){
-        const {nameimageproduct,size,key,url,product_id} = req.body;
-     
-      
-        
-        if(!await ImageProduct.findOne({ where: {key : key}})){
-            const imageproduct = await ImageProduct.create({nameimageproduct:nameimageproduct,size:size,key:key,url:url,product_id:product_id});
+
+        const {id} = req.params;
+       
+            const imageproduct = await ImageProduct.create({
+                nameimageproduct:req.file.originalname,
+                size:req.file.size,
+                key:req.file.filename,
+                url:'',
+                product_id:id});
             return res.json(imageproduct);
-        }else{
-            return res.status(400).json({err:'imageproduct already exists'});
-        }
+       
     }
 }
 

@@ -42,6 +42,7 @@ routes.post('/firstimageproduct',multer(multerconfig).single('file'),FirstImageP
 routes.delete('/firstimageproduct/:id',FirstImageProductController.delete);
 
 routes.get('/selectproduct',SelectProductsController.index);
+routes.post('/searchproducts',SelectProductsController.select);
 
 // routes.post("/posts",multer(multerconfig).single('file'),(req,res) => {
 //     console.log(req.file);

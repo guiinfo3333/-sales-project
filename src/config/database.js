@@ -1,8 +1,8 @@
 module.exports = {
 dialect: 'mysql',
-host: 'localhost',
-username: 'root',
-password: '',
+host: 'mysql669.umbler.com',
+username: 'rootfut',
+password: '12345678a',
 database: 'Sales',
 define : {
 	timestamps: true,

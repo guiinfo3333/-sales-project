@@ -11,25 +11,36 @@ module.exports ={
             return res.json(admins);
         }catch(err){
             res.json(err);
+            console.log(err);
         }
     },
     async store(req,res){
-        const {nameadmin, emailadmin,passwordadmin} = req.body;
-     
-        const hash = await bcrypt.hash(passwordadmin,10);
-        
-        if(!await Admin.findOne({ where: {emailadmin : emailadmin}})){
-            const admin = await Admin.create({nameadmin:nameadmin,emailadmin:emailadmin,passwordadmin:hash});
-            return res.json(admin);
-        }else{
-            return res.status(400).json({err:'Admin already exists'});
+
+        try{
+                    const {nameadmin, emailadmin,passwordadmin} = req.body;
+                 
+                    const hash = await bcrypt.hash(passwordadmin,10);
+                    
+                    if(!await Admin.findOne({ where: {emailadmin : emailadmin}})){
+                        const admin = await Admin.create({nameadmin:nameadmin,emailadmin:emailadmin,passwordadmin:hash});
+                        return res.json(admin);
+                    }else{
+                        return res.status(400).json({err:'Admin already exists'});
+                    }
+        }catch(err){
+
+                     res.json(err);
+
         }
     },
     async change(req,res){
-        const {id} = req.params;
-        const {nameadmin, emailadmin,passwordadmin} = req.body;
-        await Admin.update({
-           nameadmin:nameadmin,
+
+        try{
+            
+            const {id} = req.params;
+            const {nameadmin, emailadmin,passwordadmin} = req.body;
+            await Admin.update({
+                nameadmin:nameadmin,
            emailadmin:emailadmin,
            passwordadmin:passwordadmin 
         },{
@@ -44,10 +55,14 @@ module.exports ={
             error : true,
             error : error
         }));
-
+        
+    }catch(err){
+        res.json(err);
+    }
         
     },
     async delete(req,res){
+        try{
         const {id} = req.params;
         if(await Admin.findOne({ where: {id : id}})){
         await Admin.destroy(
@@ -66,6 +81,12 @@ module.exports ={
 
     }else{
         return res.status(404).json({err:'Admin not found'});
+    }
+}
+    catch(err){
+
+        res.json(err);
+
     }
 }
 

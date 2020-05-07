@@ -5,8 +5,13 @@ const bcrypt = require('bcryptjs');
 module.exports ={
 
     async index(req,res){
-        const admins = await Admin.findAll();
-        return res.json(admins);
+        try{
+            const admins = await Admin.findAll();
+            
+            return res.json(admins);
+        }catch(err){
+            res.json(err);
+        }
     },
     async store(req,res){
         const {nameadmin, emailadmin,passwordadmin} = req.body;

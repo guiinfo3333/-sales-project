@@ -16,6 +16,9 @@ const SelectProductsController = require('./controllers/SelectProductsController
 const routes = express.Router();
 
 routes.get('/admin',AdminController.index);
+routes.get('/',(req,res)=>{
+res.json({"nome":"ao eterno pai cantemos"});
+});
 routes.post('/admin',AdminController.store);
 routes.put('/admin/:id',AdminController.change);
 routes.delete('/admin/:id',AdminController.delete);

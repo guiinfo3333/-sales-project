@@ -3,11 +3,18 @@ const FirstImageProduct = require('../models/firstimageproduct');
 module.exports ={
 
     async index(req,res){
-        const firstimageproduct = await FirstImageProduct.findAll();
-        return res.json(firstimageproduct);
+        try{
+
+            const firstimageproduct = await FirstImageProduct.findAll();
+            return res.json(firstimageproduct);
+        }
+        catch(err){
+            res.json(err);
+        }
     },
     async store(req,res){
-     
+
+        try{
             const firstmageproduct = await FirstImageProduct.create({
                 nameimageproduct:req.file.originalname,
                 size:req.file.size,
@@ -15,28 +22,38 @@ module.exports ={
                 url:'',
             });
             return res.json(firstmageproduct);
+        }
+        catch(err){
+            res.json(err);
+        }
+     
       
     },
     async delete(req,res){
-        const {id} = req.params;
-        if(await FirstImageProduct.findOne({ where: {id : id}})){
-        await FirstImageProduct.destroy(
-            {
-            where : {
-                id : id
-            }
-        })
-        .then (status => res.status(200).json({
-            message : 'FirstImageProduct has been delete'
-        }))
-        .catch(error => res.json({
-            error : true,
-            error : error
-        }));
-
-    }else{
-        return res.status(404).json({err:'FirstImageProduct not found'});
-    }
+        try{
+            const {id} = req.params;
+            if(await FirstImageProduct.findOne({ where: {id : id}})){
+            await FirstImageProduct.destroy(
+                {
+                where : {
+                    id : id
+                }
+            })
+            .then (status => res.status(200).json({
+                message : 'FirstImageProduct has been delete'
+            }))
+            .catch(error => res.json({
+                error : true,
+                error : error
+            }));
+    
+        }else{
+            return res.status(404).json({err:'FirstImageProduct not found'});
+        }
+        }
+        catch(err){
+            res.json(err);
+        }
 }
 
 }

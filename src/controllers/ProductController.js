@@ -1,4 +1,7 @@
 const Product = require('../models/Product');
+// const fs = require("fs");
+// const path = require("path");
+// const {promisify} = require("util");
 
 module.exports ={
 
@@ -67,6 +70,9 @@ module.exports ={
         try{
             const {id} = req.params;
             if(await Product.findOne({ where: {id : id}})){
+                // return  promisify(fs.unlink)(
+                //     path.resolve(__dirname,"tpm","uploads",key)
+                // )
             await Product.destroy(
                 {
                 where : {
@@ -80,6 +86,8 @@ module.exports ={
                 error : true,
                 error : error
             }));
+
+            
     
         }else{
             return res.status(404).json({err:'Product not found'});

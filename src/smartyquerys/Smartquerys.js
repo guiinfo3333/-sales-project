@@ -10,8 +10,8 @@ class Smartquerys{
 	if(!pag){
 		pag=1;
 	}
-	var valpage = ((pag-1)*2);
-	var offset =" LIMIT 2 OFFSET "+valpage;
+	var valpage = ((pag-1)*15);
+	var offset =" LIMIT 15 OFFSET "+valpage;
 		switch(op){                 //independente de categoria
 			case 'totalinitial':   //retorna todos os produtos com sua descricao e a sua imagem a ser usado na tela inicial
 				 query= "select p.id,p.nameproduct,p.value,p.description,f.nameimageproduct,f.size,f.key,f.url"

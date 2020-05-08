@@ -19,7 +19,7 @@ module.exports ={
                 nameimageproduct:req.file.originalname,
                 size:req.file.size,
                 key:req.file.filename,
-                url:'http://sales-com-br.umbler.net/files/'+key,
+                url:"http://sales-com-br.umbler.net/files/"+req.file.filename,
             });
             return res.json(firstmageproduct);
         }

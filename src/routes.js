@@ -1,5 +1,5 @@
 const express = require('express');
-const multer =require("multer");
+const multer = require("multer");
 const multerconfig = require('./config/multer');
 // const authMiddleware = require('./middlewares/auth');
 

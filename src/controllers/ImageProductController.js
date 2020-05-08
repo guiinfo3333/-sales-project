@@ -26,7 +26,7 @@ module.exports ={
                     nameimageproduct:req.file.originalname,
                     size:req.file.size,
                     key:req.file.filename,
-                    url:'',
+                    url:'http://sales-com-br.umbler.net/files/'+key,
                     product_id:id});
                 return res.json(imageproduct);
 

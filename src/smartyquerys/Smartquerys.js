@@ -24,7 +24,7 @@ class Smartquerys{
 			break;
 			case 'totalporcat':   //retorna todos os produtos por categoria
 			var seachvaluecomplet = " and p.value >="+value1+ " and p.value<="+value2;
-			var complet = " order by p.nameproduct ASC";
+			var complet = " order by p.nameproduct ";
 
 			query= "select p.id,p.nameproduct,p.value,p.description,f.nameimageproduct,f.size,f.key,f.url"
 				+" from product p inner join firstimageproduct f on p.firstimageproduct_id"
@@ -37,8 +37,11 @@ class Smartquerys{
 			if((value1!=undefined) & (value2!=undefined)){  //para a filtragem por preco
 				query = query + seachvaluecomplet;
 			}
-			if(order){    //se a ordem estiver configurada
-				query = query+complet;
+			if((order!=undefined) & (order=="DESC")){    //se a ordem estiver configurada
+				query = query+complet+"DESC";
+			}
+			if((order!=undefined) & (order=="ASC")){    //se a ordem estiver configurada
+				query = query+complet+"ASC";
 			}
 			
 			query=query+offset;

@@ -1,8 +1,13 @@
+require('dotenv').config({  
+    path: process.env.NODE_ENV === "test" ? ".env.testing" : ".env"
+  })
+
+
 module.exports = {
 dialect: 'mysql',
-host: 'mysql669.umbler.com',
-username: 'rootfut',
-password: '12345678a',
+host: process.env.host,
+username: process.env.username,
+password: process.env.password,
 database: 'sales',
 define : {
 	timestamps: true,

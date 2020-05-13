@@ -9,6 +9,7 @@ const TechinicalSheet = require('../models/TechinicalSheet');
 const Product = require('../models/Product');
 const ImageProduct = require('../models/ImageProduct');
 const FirstImageProduct = require('../models/firstimageproduct');
+const User = require('../models/Users');
 
 const connection = new Sequelize(dbConfig);
 
@@ -18,6 +19,7 @@ TechinicalSheet.init(connection);
 FirstImageProduct.init(connection);
 ImageProduct.init(connection);
 Product.init(connection);
+User.init(connection);
 
 
 module.exports = connection;

@@ -11,7 +11,7 @@ module.exports ={
             return res.json(admins);
         }catch(err){
             res.json(err);
-            console.log(err);
+           
         }
     },
     async store(req,res){

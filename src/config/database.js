@@ -1,12 +1,13 @@
+
 require('dotenv').config({  
-    path: process.env.NODE_ENV === "test" ? ".env.testing" : ".env"
-  })
+  path: process.env.NODE_ENV === "test" ? ".env.testing" : ".env"
+})
 
 
 module.exports = {
 dialect: 'mysql',
 host: process.env.HOST,
-username: process.env.USERNAME,
+username: process.env.NAME,
 password: process.env.PASSWORD,
 database: 'sales',
 define : {

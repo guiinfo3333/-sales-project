@@ -1433,6 +1433,11 @@ package-json@^6.3.0:
     registry-url "^5.0.0"
     semver "^6.2.0"
 
+pagarme@^4.8.0:
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/pagarme/-/pagarme-4.8.0.tgz#cb4f830405129194880d6ea152e0d1d76ac04190"
+  integrity sha512-H04O7Zwn2xdVlu69G86olCpl6O6gvFhUN0KZEuIa/J3jUUQhnxhq/k9chP2E9SKZXL+I8vwkf6c06VOk+hUtcw==
+
 parseurl@~1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/parseurl/-/parseurl-1.3.3.tgz#9da19e7bee8d12dff0513ed5b76957793bc2e8d4"
@@ -2032,6 +2037,11 @@ widest-line@^3.1.0:
   integrity sha512-NsmoXalsWVDMGupxZ5R08ka9flZjjiLvHVAWYOKtiKM8ujtZWr9cRffak+uSE48+Ob8ObalXpwyeUiyDD6QFgg==
   dependencies:
     string-width "^4.0.0"
+
+win-node-env@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/win-node-env/-/win-node-env-0.4.0.tgz#2d9dc991702920c73eaa1d644655b773886da5cb"
+  integrity sha512-bf4TV/NOBEazlHJW/bOns7u2JaHe3f5bz8BYanm/xuqJ405NG9OK3VAI1Y2WvHJsAo4GMU8EYTHSh59Q3UfHvA==
 
 wkx@^0.4.8:
   version "0.4.8"

@@ -65,8 +65,10 @@ class Smartquerys{
 	  
 	  
 	}
-	static seachlikeproduct (nameproduct,pag){
+	static seachlikeproduct (nameproduct,pag,cat){
 		console.log(pag);
+
+		var categoria = " and pc.namecategory='"+cat+"'";
 		if(!pag){
 			pag=1;
 		}
@@ -77,7 +79,9 @@ class Smartquerys{
 		+" from product p inner join firstimageproduct f on p.firstimageproduct_id"
 		+" = f.id inner join productcategory pc on p.productcategory_id ="
 		+" pc.id join techinicalsheet t on p.techinicalsheet_id= t.id  where p.nameproduct like "+vnameproduct;
-
+		if(cat){
+			query=query + categoria;
+		}
 		query = query + offset;
 		return sequelize.query(query);
 	}

@@ -19,9 +19,10 @@ module.exports ={
     },
     async select(req,res){
         try{
-            const{pag} = req.query;
+           
+            const{pag,cat} = req.query;
             const{nameproduct} =req.body;
-            const product = await Smartquery.seachlikeproduct(nameproduct,pag);
+            const product = await Smartquery.seachlikeproduct(nameproduct,pag,cat);
             return res.json(product[0]);
 
         }
